@@ -123,6 +123,6 @@ A API Open-Meteo é pública, gratuita e sem necessidade de chave de acesso.
 
 ## Autor
 
-**Leon Nogueira Lima**
+**LNL**
 GitHub: [@leonlimask20-dot](https://github.com/leonlimask20-dot)
 Email: leonlimask@gmail.com
