@@ -1,59 +1,128 @@
-# ClimaDashboard
+# Clima Dashboard
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.5.
+![CI](https://github.com/leonlimask20-dot/clima-dashboard/actions/workflows/ci.yml/badge.svg)
+![Angular](https://img.shields.io/badge/Angular-19-DD0031?logo=angular&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)
+![SCSS](https://img.shields.io/badge/SCSS-CC6699?logo=sass&logoColor=white)
 
-## Development server
+Dashboard de previsão do tempo em tempo real construído com Angular 19, consumindo a Open-Meteo API — gratuita e sem necessidade de cadastro.
 
-To start a local development server, run:
+---
+
+## Links rápidos
+
+| | |
+|---|---|
+| Rodar localmente | `ng serve` |
+| Build de produção | `ng build` |
+| API utilizada | [open-meteo.com](https://open-meteo.com) |
+
+---
+
+## Principais competências demonstradas
+
+- **Angular 19** com Standalone Components — sem NgModules
+- **HttpClient** com Observables — `switchMap`, `map`, encadeamento reativo
+- **@Input() e @Output()** — comunicação entre componentes pai e filho
+- **Services com @Injectable** — lógica de negócio separada dos componentes
+- **Two-way data binding** com `[(ngModel)]` e `FormsModule`
+- **Diretivas estruturais** — `*ngFor`, `*ngIf`, `[class.ativo]`, `[style.color]`
+- **SCSS com variáveis e responsividade** — Mobile First com media queries
+- **Roteamento** com `RouterOutlet` e lazy loading pronto para escalar
+- **Pipe de data nativo** do Angular para formatação de datas
+- **Zone.js** configurado explicitamente no `angular.json`
+- Pipeline CI com GitHub Actions — build de produção a cada push
+
+---
+
+## Comparação com React (Monitor de Clima)
+
+Este projeto implementa as mesmas funcionalidades do [Monitor de Clima](https://github.com/leonlimask20-dot/monitor-clima) feito em React, permitindo comparar os dois frameworks lado a lado:
+
+| Conceito | React | Angular |
+|---|---|---|
+| Lógica de API | Hook customizado `useClima` | Service `ClimaService` |
+| Estado local | `useState` | propriedade da classe |
+| Efeito colateral | `useEffect` | `subscribe()` no método |
+| Props filho→pai | callback prop | `@Output() EventEmitter` |
+| Props pai→filho | props | `@Input()` |
+| HTTP | `fetch()` | `HttpClient` + Observable |
+| Lista | `.map()` | `*ngFor` |
+| Condicional | `&&` / ternário | `*ngIf` |
+
+---
+
+## Tecnologias
+
+| Tecnologia | Versão | Uso |
+|---|---|---|
+| Angular | 19 | Framework principal |
+| TypeScript | 5 | Tipagem estática |
+| RxJS | 7 | Programação reativa (Observables) |
+| SCSS | — | Estilização com variáveis |
+| Zone.js | — | Detecção de mudanças |
+| Open-Meteo API | — | Dados climáticos gratuitos |
+| GitHub Actions | — | CI/CD |
+
+---
+
+## Arquitetura
+
+```
+src/app/
+├── services/
+│   └── clima.ts              ← ClimaService com HttpClient e Observables
+├── components/
+│   ├── busca-cidade/         ← [(ngModel)] two-way binding + @Output EventEmitter
+│   ├── cartao-clima/         ← @Input() com dados climáticos atuais
+│   └── previsao/             ← @Input() com previsão 7 dias + *ngFor
+└── pages/
+    └── home/                 ← Orquestra componentes + gerencia estado
+```
+
+---
+
+## Funcionalidades
+
+- Busca de qualquer cidade do mundo com prioridade para o Brasil
+- Atalhos rápidos para 6 cidades principais
+- Temperatura atual, sensação térmica, umidade e velocidade do vento
+- Descrição e ícone do clima baseados no código WMO
+- Previsão de 7 dias com máxima, mínima e precipitação
+- Destaque visual para o dia atual na previsão
+- Indicador de loading e mensagem de erro amigável
+
+---
+
+## Como executar
 
 ```bash
+# Instalar dependências
+npm install
+
+# Rodar em desenvolvimento
 ng serve
+
+# Acesse http://localhost:4200
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
+## Como funciona a API
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+```
+1. Usuário digita o nome da cidade
+2. Geocoding API → converte nome em coordenadas (latitude/longitude)
+3. Forecast API  → retorna clima atual + previsão 7 dias
+4. switchMap     → encadeia as duas requisições em sequência
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+A API Open-Meteo é pública, gratuita e sem necessidade de chave de acesso.
 
-```bash
-ng generate --help
-```
+---
 
-## Building
+## Autor
 
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+**Leon Nogueira Lima**
+GitHub: [@leonlimask20-dot](https://github.com/leonlimask20-dot)
+Email: leonlimask@gmail.com
