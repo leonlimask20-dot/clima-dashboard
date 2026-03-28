@@ -1,0 +1,42 @@
+<div class="home">
+  <header class="header">
+    <div class="header-content">
+      <h1 class="header-titulo">🌤️ Clima Dashboard</h1>
+      <span class="header-sub">Previsão do tempo em tempo real</span>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="busca-wrapper">
+      <app-busca-cidade (buscar)="onBuscar($event)" />
+    </div>
+
+    <!-- Erro -->
+    <div class="alerta-erro" *ngIf="erro">
+      ⚠️ {{ erro }}
+    </div>
+
+    <!-- Loading -->
+    <div class="loading" *ngIf="carregando">
+      <div class="spinner"></div>
+      <p>Buscando dados climáticos...</p>
+    </div>
+
+    <!-- Resultado -->
+    <div class="resultado" *ngIf="dados && !carregando">
+      <app-cartao-clima [dados]="dados" />
+      <app-previsao [previsao]="dados.previsao" />
+    </div>
+
+    <!-- Estado inicial -->
+    <div class="estado-inicial" *ngIf="!dados && !carregando && !erro">
+      <span class="estado-icone">🌍</span>
+      <p>Digite o nome de uma cidade para ver o clima</p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    Dados: <a href="https://open-meteo.com" target="_blank">Open-Meteo</a> •
+    <a href="https://github.com/leonlimask20-dot/clima-dashboard" target="_blank">GitHub</a>
+  </footer>
+</div>

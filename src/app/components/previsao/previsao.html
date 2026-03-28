@@ -1,0 +1,18 @@
+<div class="previsao-container">
+  <h3 class="previsao-titulo">Previsão para 7 dias</h3>
+  <div class="previsao-grid">
+    <div
+      *ngFor="let dia of previsao"
+      class="previsao-dia"
+      [class.hoje]="isHoje(dia.data)"
+    >
+      <span class="dia-data">{{ isHoje(dia.data) ? 'Hoje' : formatarData(dia.data) }}</span>
+      <span class="dia-icone">{{ climaService.interpretarCodigo(dia.codigo).icone }}</span>
+      <div class="dia-temps">
+        <span class="temp-max">{{ dia.tempMax }}°</span>
+        <span class="temp-min">{{ dia.tempMin }}°</span>
+      </div>
+      <span class="dia-chuva" *ngIf="dia.chuva > 0">💧 {{ dia.chuva }}mm</span>
+    </div>
+  </div>
+</div>

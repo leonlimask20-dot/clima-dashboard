@@ -1,0 +1,73 @@
+.previsao-container {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.previsao-titulo {
+  font-size: 16px;
+  font-weight: 700;
+  color: #64748b;
+  margin: 0 0 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.previsao-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+
+  @media (max-width: 600px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.previsao-dia {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 6px;
+  border-radius: 12px;
+  background: #f8fafc;
+  transition: background 0.2s;
+
+  &.hoje {
+    background: #eff6ff;
+    border: 2px solid #3b82f6;
+  }
+
+  .dia-data {
+    font-size: 11px;
+    color: #64748b;
+    text-align: center;
+  }
+
+  .dia-icone {
+    font-size: 22px;
+  }
+
+  .dia-temps {
+    display: flex;
+    gap: 4px;
+    align-items: baseline;
+  }
+
+  .temp-max {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1e293b;
+  }
+
+  .temp-min {
+    font-size: 12px;
+    color: #94a3b8;
+  }
+
+  .dia-chuva {
+    font-size: 10px;
+    color: #3b82f6;
+  }
+}

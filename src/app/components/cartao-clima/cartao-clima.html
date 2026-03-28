@@ -1,0 +1,39 @@
+<div class="cartao" [style.border-color]="info.cor">
+  <div class="cartao-header" [style.background]="info.cor + '22'">
+    <div class="local">
+      <span class="icone">{{ info.icone }}</span>
+      <div>
+        <h2 class="cidade">{{ dados.cidade }}
+          <span class="estado" *ngIf="dados.estado"> — {{ dados.estado }}</span>
+        </h2>
+        <p class="pais">{{ dados.pais }}</p>
+      </div>
+    </div>
+    <p class="descricao" [style.color]="info.cor">{{ info.descricao }}</p>
+  </div>
+
+  <div class="cartao-body">
+    <div class="temperatura-principal">
+      <span class="temp-valor">{{ dados.temperatura }}°</span>
+      <span class="temp-unidade">C</span>
+    </div>
+
+    <div class="detalhes">
+      <div class="detalhe-item">
+        <span class="detalhe-icone">🌡️</span>
+        <span class="detalhe-label">Sensação</span>
+        <span class="detalhe-valor">{{ dados.sensacaoTermica }}°C</span>
+      </div>
+      <div class="detalhe-item">
+        <span class="detalhe-icone">💧</span>
+        <span class="detalhe-label">Umidade</span>
+        <span class="detalhe-valor">{{ dados.umidade }}%</span>
+      </div>
+      <div class="detalhe-item">
+        <span class="detalhe-icone">💨</span>
+        <span class="detalhe-label">Vento</span>
+        <span class="detalhe-valor">{{ dados.vento }} km/h</span>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<div class="busca-container">
+  <form (ngSubmit)="onSubmit()" class="busca-form">
+    <input
+      [(ngModel)]="cidade"
+      name="cidade"
+      type="text"
+      placeholder="Digite o nome de uma cidade..."
+      class="busca-input"
+    />
+    <button type="submit" class="busca-btn" [disabled]="!cidade.trim()">
+      🔍
+    </button>
+  </form>
+
+  <div class="cidades-rapidas">
+    <button
+      *ngFor="let c of cidadesRapidas"
+      (click)="buscarRapido(c)"
+      class="cidade-chip"
+    >
+      {{ c }}
+    </button>
+  </div>
+</div>
